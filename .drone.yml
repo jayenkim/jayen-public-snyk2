@@ -1,0 +1,35 @@
+---
+kind: pipeline
+type: docker
+name: source-code-analysis-snyk
+      
+steps:
+  - name: source-code-analysis-push-snyk
+    pull: if-not-exists
+    image: snyk/snyk:linux
+#https://github.com/snyk/snyk-images    
+    volumes:
+      - name: cache
+        path: ~/.sonar
+    settings:
+        snyk_username:
+          from_secret: snyk_username
+        snyk_password:
+          from_secret: snyk_password
+        snyk_token:
+          from_secret: snyk_token
+# 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
+    commands:
+      - snyk auth $snyk_token
+      - snyk test -d 
+    when:
+      branch: 
+        - main
+      event: 
+        include:
+          - pull_request
+      ref:
+        - refs/heads/main
+        - refs/pull/**
+#    depends_on:
+#      - source-code-analysis-pr-init

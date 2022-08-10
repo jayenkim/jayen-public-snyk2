@@ -20,7 +20,6 @@ steps:
           from_secret: snyk_token
 # 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
     commands:
-      -echo $SNYK_TOKEN
       - snyk test -d 
     when:
       branch: 

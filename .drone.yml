@@ -6,7 +6,6 @@ name: source-code-analysis-snyk
 steps:
   - name: source-code-analysis-push-snyk
     pull: if-not-exists
-    privileged: true
     image: snyk/snyk:linux
 #https://github.com/snyk/snyk-images    
     volumes:

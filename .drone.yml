@@ -18,9 +18,9 @@ steps:
           from_secret: snyk_password
         SNYK_TOKEN:
           from_secret: snyk_token
-# 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
+# b2b35c8-a1b4-4a83-bb02-31adda7ed8c2       
     commands:
-      - snyk auth 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
+      - snyk auth b2b35c8-a1b4-4a83-bb02-31adda7ed8c2   
       - snyk test -d 
     when:
       branch: 

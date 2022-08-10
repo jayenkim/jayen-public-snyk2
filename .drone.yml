@@ -4,7 +4,7 @@ type: docker
 name: source-code-analysis-snyk
       
 steps:
-  - name: source-code-analysis-push-snyk
+  - name: snyk-pr
     pull: if-not-exists
     image: snyk/snyk:linux
 #https://github.com/snyk/snyk-images    
@@ -20,6 +20,7 @@ steps:
           from_secret: snyk_token
 # 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
     commands:
+      - snyk auth 7373b5a6-1ea2-4afa-8fd4-70231dd8dccd        
       - snyk test -d 
     when:
       branch: 
